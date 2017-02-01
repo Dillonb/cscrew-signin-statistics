@@ -70,3 +70,24 @@ select text, count(*) from signin inner join signin_reason on signin_reason.id =
 | Project Night                                    |                 2 |
 | Meeting or Presentation                          |               102 |
 | Using Room Resources (Tape, Stapler, iMacs, etc) |                30 |
+
+** Year distribution
+   Year distribution was actually fairly balanced.
+
+   #+BEGIN_SRC sql
+   select year, count(distinct user_id) from signin inner join user on user.id = user_id where created_at < '2016-12-16' and created_at > '2016-8-29' group by year;
+   #+END_SRC
+
+
+| Year                         | Number of Unique Users |
+|------------------------------+------------------------|
+| NULL                         |                      3 |
+| Center for Rural Studies     |                      1 |
+| Continuing Education Student |                      1 |
+| First Year                   |                     38 |
+| Graduate                     |                      3 |
+| Junior                       |                     39 |
+| Level SS                     |                      1 |
+| Senior                       |                     56 |
+| Sophomore                    |                     38 |
+| Student Govt Association     |                      1 |
